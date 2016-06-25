@@ -14,9 +14,9 @@
                 <h1>
                     Oops!</h1>
                 <h2>
-                    Serviço indisponível no momento.</h2>
+                    Erro interno.</h2>
                 <div class="error-details">
-                    Volte novamente mais tarde.
+                    Estamos tendo um pequeno problema nessa página. Volte novamente mais tarde.
                 </div>
             </div>
         </div>

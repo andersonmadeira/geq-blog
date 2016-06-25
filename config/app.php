@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'pt',
 
     /*
     |--------------------------------------------------------------------------
@@ -145,6 +145,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        Jenssegers\Date\DateServiceProvider::class, // Provider pra tradução de format datas
+        App\Providers\HelpersProvider::class, // Vai carregar os helpers pra serem acessíveis a todo o projeto
+
     ],
 
     /*
@@ -192,6 +195,8 @@ return [
         'URL'       => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View'      => Illuminate\Support\Facades\View::class,
+        'Date'      => Jenssegers\Date\Date::class,
+
 
     ],
 

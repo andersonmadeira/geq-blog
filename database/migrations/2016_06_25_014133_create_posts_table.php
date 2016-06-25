@@ -15,7 +15,7 @@ class CreatePostsTable extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title', 50); // titulo
-            $table->string('content'); // conteudo
+            $table->text('content'); // conteudo
             $table->string('image', 35); // imagem
             $table->integer('user_id')->unsigned(); // autor do post, snake case dessa maneira pro laravel pegar automaticamente o nome do campo
             $table->timestamps();

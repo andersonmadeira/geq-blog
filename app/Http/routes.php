@@ -13,7 +13,12 @@
 
 use App\User;
 
-Route::get('/', function () {
-    // pega só os 5 primeiros posts do usuário admin, só pra testar o BD
-    return User::where('name', 'admin')->first()->posts()->take(5)->get();
-});
+Route::get('/', [
+    'as' => 'home',
+    'uses' => 'PostController@index'
+]);
+
+Route::get('/post', [
+    'as' => 'post',
+    'uses' => 'PostController@show'
+]);

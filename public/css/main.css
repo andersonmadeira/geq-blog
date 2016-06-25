@@ -1,0 +1,23 @@
+.post-body {
+  padding-top: 20px; !important;
+  font-size: 20px; !important;
+}
+
+.post_title, .post_title_avtr {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.post_title_avtr {
+  margin-left: 50px;
+}
+
+.post_detail, .post_detail_avtr {
+  color: #999;
+  font-size: 13px;
+}
+
+.post_detail_avtr {
+  margin-left: 40px;
+}

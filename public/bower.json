@@ -1,0 +1,17 @@
+{
+  "name": "geq-blog",
+  "authors": [
+    "Anderson Madeira <andersonmadeiracs@gmail.com>"
+  ],
+  "description": "Blog",
+  "main": "",
+  "license": "MIT",
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

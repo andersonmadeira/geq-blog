@@ -14,9 +14,9 @@
                 <h1>
                     Oops!</h1>
                 <h2>
-                    Serviço indisponível no momento.</h2>
+                    404 Página Não Encontrada!</h2>
                 <div class="error-details">
-                    Volte novamente mais tarde.
+                    Sinto muito, mas a página que você procura não existe aqui.
                 </div>
             </div>
         </div>
