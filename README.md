@@ -46,3 +46,13 @@ Para ver a aplicação em execução navegue até a pasta *public* ou sirva com 
 ```
 php artisan serve
 ```
+
+## Dados para teste
+
+Para acessar a parte administrativa você precisará das credenciais:
+
+```
+email: andersonmadeiracs@gmail.com
+nome: admin
+senha: admin
+```
