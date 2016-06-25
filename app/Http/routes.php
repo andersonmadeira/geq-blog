@@ -18,6 +18,21 @@ Route::get('/', [
     'uses' => 'PostController@index'
 ]);
 
+Route::get('/login', [
+    'as' => 'get_login',
+    'uses' => 'Auth\AuthController@getLogin'
+]);
+
+Route::post('/login', [
+    'as' => 'post_login',
+    'uses' => 'Auth\AuthController@postLogin'
+]);
+
+Route::get('/logout', [
+    'as' => 'get_logout',
+    'uses' => 'Auth\AuthController@getLogout'
+]);
+
 Route::get('/post', [
     'as' => 'post',
     'uses' => 'PostController@show'

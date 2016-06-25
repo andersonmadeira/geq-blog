@@ -54,13 +54,13 @@
         <div class="navbar-custom-menu">
           <ul class="nav navbar-nav">
 
-            <!-- User Account Menu -->
-            <!--<li class="dropdown user user-menu"> -->
+            @if (Auth::check())
+            <li class="dropdown user user-menu">
               <!-- Menu Toggle Button -->
-              <!--<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                 <img src="{{ asset('img/avatar5.png') }}" class="user-image" alt="User Image">
                 {{-- hidden-xs hides the username on small devices so only the image appears. --}}
-                <span class="hidden-xs">Anderson Madeira</span>
+                <span class="hidden-xs">{{ Auth::user()->name }}</span>
               </a>
               <ul class="dropdown-menu">
                 {{-- The user image in the menu --> --}}
@@ -68,24 +68,26 @@
                   <img src="{{ asset('img/avatar5.png') }}" class="img-circle" alt="User Image">
 
                   <p>
-                    Anderson Madeira
+                    {{ Auth::user()->name }}
                     <small>Usuário</small>
                   </p>
                 </li>
                 <!-- Menu Footer-->
-                <!--<li class="user-footer">
+                <li class="user-footer">
                   <div class="pull-left">
                     <a href="#" class="btn btn-default btn-flat">Perfil</a>
                   </div>
                   <div class="pull-right">
-                    <a href="#" class="btn btn-default btn-flat">Sair</a>
+                    <a href="{{ route('get_logout') }}" class="btn btn-default btn-flat">Sair</a>
                   </div>
                 </li>
               </ul>
-            </li>-->
-            <li>
-              <a href="#?"><i class="fa fa-sign-in"></i>&nbsp;&nbsp; Entrar</a>
             </li>
+            @else
+            <li>
+              <a href="{{ route('get_login') }}"><i class="fa fa-sign-in"></i>&nbsp;&nbsp; Entrar</a>
+            </li>
+            @endif
           </ul>
         </div>
         <!-- /.navbar-custom-menu -->
