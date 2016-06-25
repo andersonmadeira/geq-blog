@@ -11,6 +11,7 @@ class Post extends Model
 {
     protected $table = 'posts';
 
+    // método não é mais necessário. Pode se chamar só o getAuthor() e pegar o attr name
     public function getAuthorName()
     {
         return User::find($this->user_id)->first()->name;
@@ -27,6 +28,7 @@ class Post extends Model
             ->format('l j F Y H:i:s'));
     }
 
+    // pega o resumo do post
     public function getExcerpt()
     {
         return substr($this->content, 0, 200);

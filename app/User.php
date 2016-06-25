@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\Access\Authorizable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Contracts\Auth\Access\Authorizable as AuthorizableContract;
 use Illuminate\Contracts\Auth\CanResetPassword as CanResetPasswordContract;
+use Jenssegers\Date\Date;
+use Shortids;
 
 class User extends Model implements AuthenticatableContract,
                                     AuthorizableContract,
@@ -37,8 +39,22 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
+    // usa as relationships do eloquent pra facilitar
     public function posts()
     {
         return $this->hasMany('App\Post');
+    }
+
+    // Sempre usar esse método pra obter as ids, porque já tá encrypted
+    public function getId()
+    {
+        return Shortids::encode($this->id);
+    }
+
+    // tradução das datas.
+    public function getPrettyBornAt()
+    {
+        return ucfirst(Date::createFromFormat('Y-m-d', $this->born_at)
+            ->format('j F Y'));
     }
 }

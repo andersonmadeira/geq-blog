@@ -17,7 +17,7 @@ class UsersTableSeeder extends Seeder
         $user->name = 'admin';
         $user->email = 'andersonmadeiracs@gmail.com';
         $user->password = bcrypt('admin');
-        $user->born_at = '18/05/1989';
+        $user->born_at = '1989/05/18';
         $user->image = 'http://placekitten.com/150/150';
 
         $user->save();

@@ -23,6 +23,7 @@ class HelpersProvider extends ServiceProvider
      */
     public function register()
     {
+        // esse provider só faz com que os helpers fiquem acessíveis por toda a app
         foreach (glob(app_path().'/Helpers/*.php') as $filename){
             require_once($filename);
         }

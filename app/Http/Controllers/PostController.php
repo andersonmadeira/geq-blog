@@ -13,20 +13,17 @@ use Shortids;
 
 class PostController extends Controller
 {
-    public function index()
-    {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
-
-        return view('home', array(
-            'posts' => $posts,
-            'title' => 'Todos os posts'));
-    }
-
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Exibe um post, single post page. Exibe o post completo.
+     */
     public function show()
     {
         $pid = Shortids::decode(Input::get('pid'));
         $post = Post::find($pid)->first();
 
+        // Verifica se não foi informado id, se não conseguiu decriptar ou se o post
+        // com essa id não existe. Se sim para algum desses, manda página 404 não encontrado
         if (!$pid || !$post)
             abort(404);
 
@@ -36,34 +33,18 @@ class PostController extends Controller
         ));
     }
 
-    public function search()
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * Exibe todos os posts paginando de 10 em 10.
+     */
+    public function read()
     {
-        $search_pattern = Input::get('search');
+        // pega os posts paginando
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
 
-        if ($search_pattern == '') {
-            return $this->index();
-        }
-
-        $results = null;
-
-        if ( Auth::user()->hasRole(User::CONTADOR) ) {
-            $results = Pessoa::where('idContador', $idP)->
-            where(function($query) use ($search_pattern) {
-                $query->where('razaoSocial', 'LIKE', "%$search_pattern%")->
-                orWhere('nomeFantasia', 'LIKE', "%$search_pattern%")->
-                orWhere('cpfCnpj', 'LIKE', "%$search_pattern%");
-            })->paginate(10);
-        } else {
-            $results = Pessoa::where('razaoSocial', 'LIKE', "%$search_pattern%")->
-            orWhere('nomeFantasia', 'LIKE', "%$search_pattern%")->
-            orWhere('cpfCnpj', 'LIKE', "%$search_pattern%")
-                ->paginate(10);
-        }
-
-        return view('pessoas.read', array(
-            'section'=>'Pessoas',
-            'title' => 'Busca por pessoas',
-            'search' => $search_pattern,
-            'search_results'=> $results ) );
+        return view('posts.read', array(
+            'title' => 'Lista de posts',
+            'posts' => $posts,
+            'section' => 'Posts'));
     }
 }
